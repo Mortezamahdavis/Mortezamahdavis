@@ -100,42 +100,18 @@
 
 ---
 
-## 🏗️ Data Platform Architecture
+## 🏗️ Data Platform — At a Glance
 
-<div align="center">
-
-<table>
-  <tr>
-    <td align="center" width="130"><b>📡</b><br><b>Sources</b></td>
-    <td align="center">──▶</td>
-    <td align="center" width="130"><b>📥</b><br><b>Ingestion</b></td>
-    <td align="center">──▶</td>
-    <td align="center" width="160"><b>🗄️</b><br><b>Lakehouse</b></td>
-    <td align="center">──▶</td>
-    <td align="center" width="140"><b>🔄</b><br><b>Transform</b></td>
-    <td align="center">──▶</td>
-    <td align="center" width="140"><b>📊</b><br><b>Serving</b></td>
-    <td align="center">──▶</td>
-    <td align="center" width="130"><b>🤖</b><br><b>AI Layer</b></td>
-  </tr>
-  <tr>
-    <td align="center"><sub>APIs · CRM<br>HR · Logistics<br>Surveys · Weather<br>Marketing</sub></td>
-    <td></td>
-    <td align="center"><sub>Airbyte<br>Python EKS Jobs</sub></td>
-    <td></td>
-    <td align="center"><sub>S3 Bronze<br>Delta Silver<br>Delta Gold</sub></td>
-    <td></td>
-    <td align="center"><sub>dbt (SQL)<br>PySpark<br>Databricks</sub></td>
-    <td></td>
-    <td align="center"><sub>Athena<br>BigQuery<br>Tableau · Qlik</sub></td>
-    <td></td>
-    <td align="center"><sub>Vertex AI ADK<br>Databricks Genie<br>MCP Agents</sub></td>
-  </tr>
-</table>
-
-<sub>⚙️ &nbsp;End-to-end orchestrated by <b>Apache Airflow</b> &nbsp;·&nbsp; 🏗️ &nbsp;Infrastructure managed with <b>Terraform</b></sub>
-
-</div>
+```
+                                                                      ┌─────────────────┐
+  📡 Sources              📥 Ingestion         🗄️ Lakehouse (S3)       │  📊 Serving       │
+ ─────────────────       ──────────────       ─────────────────────  │ ─────────────── │
+  APIs · CRM       ──▶   Airbyte        ──▶   Bronze  (raw)         │  Athena (SQL)   │
+  HR · Logistics   ──▶   Python on EKS  ──▶   Silver  (dbt / Spark) │  BigQuery       │ ──▶ 🤖 AI Agents
+  Surveys · Mktg          ⚙️ Airflow ──▶       Gold    (serving)     │  Tableau · Qlik │
+  Weather                   orchestrates                              └─────────────────┘
+                            everything
+```
 
 ---
 
@@ -144,8 +120,8 @@
 ### 💰 Cost Optimisation
 
 ```text
-📉  Incremental Ingestion    → Replaced full-load patterns with CDC & watermark-based ingestion
-                               — significant reduction in compute hours and S3 PUT costs
+📉  Incremental dbt Models   → Migrated full-refresh models to incremental materialisation
+                               — dramatic reduction in Databricks DBU consumption and S3 costs
 🔧  Spark Tuning             → Partition pruning, parallelism tuning, broadcast joins,
                                AQE (Adaptive Query Execution) to eliminate data skew
 🧹  Lakehouse Hygiene        → Automated OPTIMIZE + VACUUM on Delta tables,
@@ -170,10 +146,11 @@
 ### 🤝 Team & Collaboration
 
 ```text
-👩‍💻  Analyst Enablement       → Onboarded business analysts to the dbt repo: Git workflows,
+👩‍💻  Analyst Enablement       → Onboarded data analysts to the dbt repo: Git workflows,
                                model conventions, writing & running tests independently
-🔁  CI / CD Pipelines        → GitHub Actions workflows for linting (Ruff), testing (pytest),
-                               dbt compilation checks — faster, safer collaboration for the team
+🔁  CI / CD Pipelines        → Built GitHub Actions pipelines covering: Ruff linting,
+                               pytest suite, dbt compile & test — PRs blocked on failure,
+                               reducing broken deployments and review back-and-forth
 📖  Documentation            → dbt docs, architecture diagrams, and runbooks so the platform
                                is understandable beyond the data engineering team
 ```
