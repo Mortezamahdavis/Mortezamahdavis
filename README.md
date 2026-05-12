@@ -100,21 +100,6 @@
 
 ---
 
-## 🏗️ Data Platform — At a Glance
-
-```
-                                                                      ┌─────────────────┐
-  📡 Sources              📥 Ingestion         🗄️ Lakehouse (S3)       │  📊 Serving       │
- ─────────────────       ──────────────       ─────────────────────  │ ─────────────── │
-  APIs · CRM       ──▶   Airbyte        ──▶   Bronze  (raw)         │  Athena (SQL)   │
-  HR · Logistics   ──▶   Python on EKS  ──▶   Silver  (dbt / Spark) │  BigQuery       │ ──▶ 🤖 AI Agents
-  Surveys · Mktg          ⚙️ Airflow ──▶       Gold    (serving)     │  Tableau · Qlik │
-  Weather                   orchestrates                              └─────────────────┘
-                            everything
-```
-
----
-
 ## ⚙️ Engineering Practices
 
 ### 💰 Cost Optimisation
