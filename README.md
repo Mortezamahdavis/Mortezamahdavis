@@ -85,14 +85,14 @@
 
 <div align="center">
 
-![Morteza's GitHub Stats](https://github-readme-stats.vercel.app/api?username=Mortezamahdavis&show_icons=true&theme=tokyonight&hide_border=true&count_private=true)
-![Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=Mortezamahdavis&layout=compact&theme=tokyonight&hide_border=true&langs_count=8)
+![Morteza's GitHub Stats](https://github-readme-stats.vercel.app/api?username=Mortezamahdavis&show_icons=true&theme=tokyonight&hide_border=true&include_all_commits=true&cache_seconds=1800)
+![Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=Mortezamahdavis&layout=compact&theme=tokyonight&hide_border=true&langs_count=8&cache_seconds=1800)
 
 </div>
 
 <div align="center">
 
-![GitHub Streak](https://streak-stats.demolab.com?user=Mortezamahdavis&theme=tokyonight&hide_border=true)
+![GitHub Streak](https://streak-stats.demolab.com?user=Mortezamahdavis&theme=tokyonight&hide_border=true&cache_seconds=1800)
 
 </div>
 
