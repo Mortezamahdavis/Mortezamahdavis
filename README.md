@@ -77,6 +77,8 @@
 🤖  AI Agents           → LLM-powered assistants on Vertex AI (HR, procurement, returns, Jira)
 🏗️  Infrastructure      → Terraform-managed GCP & AWS environments
 ⚙️  Orchestration       → Airflow DAGs for scheduling & monitoring all workflows
+💰  Cost Engineering    → Lakehouse optimisation, incremental ingestion, VACUUM/OPTIMIZE on Databricks & S3
+✅  Data Quality        → dbt tests, Great Expectations, automated alerting & stakeholder reporting
 ```
 
 ---
@@ -98,13 +100,75 @@
 
 ---
 
-## 🐍 Contribution Activity
+## 🏗️ Data Platform Architecture
 
-<div align="center">
+> A high-level view of the end-to-end data platform I work with daily
 
-![Snake animation](https://raw.githubusercontent.com/Mortezamahdavis/Mortezamahdavis/output/github-contribution-grid-snake-dark.svg)
+```mermaid
+flowchart LR
+    subgraph Sources[" 📡 Sources "]
+        A1[CRM / Salesforce]
+        A2[Marketing APIs]
+        A3[HR / Workforce]
+        A4[Logistics / PostNL]
+        A5[Surveys / Medallia]
+        A6[Weather / KNMI]
+    end
 
-</div>
+    subgraph Ingestion[" 📥 Ingestion "]
+        B1[Airbyte]
+        B2[Python EKS Jobs]
+    end
+
+    subgraph Storage[" 🗄️ Storage "]
+        C1[S3 Raw / Bronze]
+        C2[Delta Lake Silver]
+        C3[Delta Lake Gold]
+    end
+
+    subgraph Transform[" 🔄 Transformation "]
+        D1[dbt — SQL models]
+        D2[PySpark — Databricks]
+    end
+
+    subgraph Orchestration[" ⚙️ Orchestration "]
+        E1[Apache Airflow]
+    end
+
+    subgraph Serving[" 📊 Serving "]
+        F1[Athena — Ad hoc SQL]
+        F2[BigQuery]
+        F3[Tableau / QlikCloud]
+    end
+
+    subgraph AI[" 🤖 AI Layer "]
+        G1[Vertex AI ADK Agents]
+        G2[Databricks Genie]
+    end
+
+    Sources --> Ingestion
+    Ingestion --> C1
+    C1 --> D1 & D2
+    D1 & D2 --> C2 --> C3
+    E1 -.->|schedules & monitors| Ingestion & D1 & D2
+    C3 --> F1 & F2 --> F3
+    C3 --> G2
+    F2 --> G1
+```
+
+---
+
+## 💰 Cost & Quality Engineering
+
+Beyond building pipelines, I actively optimise the platform for cost and reliability:
+
+| Practice | What I do |
+|---|---|
+| **Incremental Ingestion** | Replace full-load jobs with incremental patterns — reducing compute & S3 costs |
+| **Lakehouse Optimisation** | OPTIMIZE + VACUUM on Delta tables, right-sizing Databricks clusters |
+| **S3 Cost Control** | Lifecycle policies, partition pruning, columnar formats (Parquet / Delta) |
+| **Data Quality** | dbt tests + automated alerting — failures surfaced before they reach stakeholders |
+| **Stakeholder Communication** | Translate pipeline health & data issues into clear, non-technical updates |
 
 ---
 
@@ -125,8 +189,8 @@
 
 I'm always open to interesting data engineering conversations, collaborations, or just a chat about the data world.
 
-- 💼 Open to **freelance / consulting** opportunities
 - 🧠 Happy to discuss **architecture decisions**, **dbt best practices**, **Airflow patterns**, or **AI agent design**
+- 💬 Always up for talking **lakehouse cost optimisation** and **data quality** strategies
 - 📫 Reach me via [LinkedIn](https://linkedin.com/in/mortezamahdavi-data-engineer) or [morteza.mahdavi.s@gmail.com](mailto:morteza.mahdavi.s@gmail.com)
 
 ---
