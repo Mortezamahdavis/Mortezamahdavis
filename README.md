@@ -50,6 +50,12 @@ Beyond building, I focus on making the platform **reliable**, **cost-efficient**
 
 ## What I work on
 
+**Data Domains**
+- Retail & e-commerce analytics, demand forecasting, competitor & SKU performance
+- Customer experience: survey pipelines (Medallia, Mopinion), NPS & satisfaction analytics
+- Marketing intelligence: DV360, Ahrefs, SimilarWeb ingestion & reporting
+- HR & workforce planning data, logistics & returns (PostNL), weather-demand modelling (KNMI)
+
 **Cost & Performance**
 - Migrated full-refresh dbt models to incremental — significant reduction in Databricks DBU and S3 costs
 - Spark tuning: partition pruning, broadcast joins, AQE to eliminate data skew, small file compaction
