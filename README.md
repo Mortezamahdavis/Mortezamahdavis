@@ -102,73 +102,81 @@
 
 ## 🏗️ Data Platform Architecture
 
-> A high-level view of the end-to-end data platform I work with daily
+<div align="center">
 
-```mermaid
-flowchart LR
-    subgraph Sources[" 📡 Sources "]
-        A1[CRM / Salesforce]
-        A2[Marketing APIs]
-        A3[HR / Workforce]
-        A4[Logistics / PostNL]
-        A5[Surveys / Medallia]
-        A6[Weather / KNMI]
-    end
+<table>
+  <tr>
+    <td align="center" width="130"><b>📡</b><br><b>Sources</b></td>
+    <td align="center">──▶</td>
+    <td align="center" width="130"><b>📥</b><br><b>Ingestion</b></td>
+    <td align="center">──▶</td>
+    <td align="center" width="160"><b>🗄️</b><br><b>Lakehouse</b></td>
+    <td align="center">──▶</td>
+    <td align="center" width="140"><b>🔄</b><br><b>Transform</b></td>
+    <td align="center">──▶</td>
+    <td align="center" width="140"><b>📊</b><br><b>Serving</b></td>
+    <td align="center">──▶</td>
+    <td align="center" width="130"><b>🤖</b><br><b>AI Layer</b></td>
+  </tr>
+  <tr>
+    <td align="center"><sub>APIs · CRM<br>HR · Logistics<br>Surveys · Weather<br>Marketing</sub></td>
+    <td></td>
+    <td align="center"><sub>Airbyte<br>Python EKS Jobs</sub></td>
+    <td></td>
+    <td align="center"><sub>S3 Bronze<br>Delta Silver<br>Delta Gold</sub></td>
+    <td></td>
+    <td align="center"><sub>dbt (SQL)<br>PySpark<br>Databricks</sub></td>
+    <td></td>
+    <td align="center"><sub>Athena<br>BigQuery<br>Tableau · Qlik</sub></td>
+    <td></td>
+    <td align="center"><sub>Vertex AI ADK<br>Databricks Genie<br>MCP Agents</sub></td>
+  </tr>
+</table>
 
-    subgraph Ingestion[" 📥 Ingestion "]
-        B1[Airbyte]
-        B2[Python EKS Jobs]
-    end
+<sub>⚙️ &nbsp;End-to-end orchestrated by <b>Apache Airflow</b> &nbsp;·&nbsp; 🏗️ &nbsp;Infrastructure managed with <b>Terraform</b></sub>
 
-    subgraph Storage[" 🗄️ Storage "]
-        C1[S3 Raw / Bronze]
-        C2[Delta Lake Silver]
-        C3[Delta Lake Gold]
-    end
-
-    subgraph Transform[" 🔄 Transformation "]
-        D1[dbt — SQL models]
-        D2[PySpark — Databricks]
-    end
-
-    subgraph Orchestration[" ⚙️ Orchestration "]
-        E1[Apache Airflow]
-    end
-
-    subgraph Serving[" 📊 Serving "]
-        F1[Athena — Ad hoc SQL]
-        F2[BigQuery]
-        F3[Tableau / QlikCloud]
-    end
-
-    subgraph AI[" 🤖 AI Layer "]
-        G1[Vertex AI ADK Agents]
-        G2[Databricks Genie]
-    end
-
-    Sources --> Ingestion
-    Ingestion --> C1
-    C1 --> D1 & D2
-    D1 & D2 --> C2 --> C3
-    E1 -.->|schedules & monitors| Ingestion & D1 & D2
-    C3 --> F1 & F2 --> F3
-    C3 --> G2
-    F2 --> G1
-```
+</div>
 
 ---
 
-## 💰 Cost & Quality Engineering
+## ⚙️ Engineering Practices
 
-Beyond building pipelines, I actively optimise the platform for cost and reliability:
+### 💰 Cost Optimisation
 
-| Practice | What I do |
-|---|---|
-| **Incremental Ingestion** | Replace full-load jobs with incremental patterns — reducing compute & S3 costs |
-| **Lakehouse Optimisation** | OPTIMIZE + VACUUM on Delta tables, right-sizing Databricks clusters |
-| **S3 Cost Control** | Lifecycle policies, partition pruning, columnar formats (Parquet / Delta) |
-| **Data Quality** | dbt tests + automated alerting — failures surfaced before they reach stakeholders |
-| **Stakeholder Communication** | Translate pipeline health & data issues into clear, non-technical updates |
+```text
+📉  Incremental Ingestion    → Replaced full-load patterns with CDC & watermark-based ingestion
+                               — significant reduction in compute hours and S3 PUT costs
+🔧  Spark Tuning             → Partition pruning, parallelism tuning, broadcast joins,
+                               AQE (Adaptive Query Execution) to eliminate data skew
+🧹  Lakehouse Hygiene        → Automated OPTIMIZE + VACUUM on Delta tables,
+                               Z-ordering on high-cardinality filter columns
+🪣  S3 Cost Control          → Intelligent-Tiering lifecycle policies, columnar formats
+                               (Parquet / Delta), compaction of small files
+```
+
+### ✅ Data Quality & Testing
+
+```text
+🧪  pytest                   → Unit & integration tests for all Python pipeline modules;
+                               CI runs test suite on every PR before merge
+✔️  dbt Tests                → Schema tests, custom generic tests, and source freshness
+                               checks — data quality enforced at transformation layer
+🚨  Automated Alerting       → Pipeline failures and quality breaches trigger instant
+                               notifications — issues caught before reaching stakeholders
+📢  Stakeholder Reporting    → Data health translated into clear, non-technical summaries
+                               for business owners and analysts
+```
+
+### 🤝 Team & Collaboration
+
+```text
+👩‍💻  Analyst Enablement       → Onboarded business analysts to the dbt repo: Git workflows,
+                               model conventions, writing & running tests independently
+🔁  CI / CD Pipelines        → GitHub Actions workflows for linting (Ruff), testing (pytest),
+                               dbt compilation checks — faster, safer collaboration for the team
+📖  Documentation            → dbt docs, architecture diagrams, and runbooks so the platform
+                               is understandable beyond the data engineering team
+```
 
 ---
 
