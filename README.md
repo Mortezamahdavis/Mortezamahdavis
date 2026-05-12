@@ -1,12 +1,14 @@
+[![header](https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=6,11,20&height=200&section=header&text=Morteza%20Mahdavi&fontSize=48&fontColor=fff&animation=twinkling&fontAlignY=36&desc=Data%20Engineer%20·%20Decathlon%20Netherlands&descAlignY=58&descSize=18)](https://github.com/Mortezamahdavis)
+
 <div align="center">
 
-# Morteza Mahdavi
+[![Typing SVG](https://readme-typing-svg.demolab.com?font=Fira+Code&size=15&pause=1000&color=58A6FF&center=true&vCenter=true&width=520&lines=Building+end-to-end+data+platforms;dbt+%7C+Airflow+%7C+PySpark+%7C+Databricks+%7C+EKS;AWS+%2F+GCP+%7C+Delta+Lake+%7C+Vertex+AI+ADK;Incremental+models%2C+cost+optimisation%2C+data+quality)](https://git.io/typing-svg)
 
-**Data Engineer** · Decathlon Netherlands · Based in the Netherlands
+<br/>
 
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=flat-square&logo=linkedin&logoColor=white)](https://linkedin.com/in/mortezamahdavi-data-engineer)
 [![Email](https://img.shields.io/badge/Email-D14836?style=flat-square&logo=gmail&logoColor=white)](mailto:morteza.mahdavi.s@gmail.com)
-![Profile Views](https://komarev.com/ghpvc/?username=Mortezamahdavis&color=blue&style=flat-square&label=views)
+![Profile Views](https://komarev.com/ghpvc/?username=Mortezamahdavis&color=58A6FF&style=flat-square&label=views)
 
 </div>
 
@@ -21,9 +23,28 @@ Beyond building, I focus on making the platform **reliable**, **cost-efficient**
 
 ## Stack
 
-`Python` · `SQL` · `dbt` · `Apache Airflow` · `PySpark` · `Databricks` · `EKS`
-`AWS` (S3 · Athena · Redshift) · `GCP` (BigQuery · Vertex AI) · `Airbyte` · `Delta Lake`
-`Terraform` · `Tableau` · `Qlik` · `Google ADK` · `MCP` · `MLflow`
+<div align="center">
+
+[![My Skills](https://skillicons.dev/icons?i=python,aws,gcp,terraform,kubernetes,postgres,docker,git)](https://skillicons.dev)
+
+</div>
+
+<div align="center">
+
+![dbt](https://img.shields.io/badge/dbt-FF694B?style=flat-square&logo=dbt&logoColor=white)
+![Airflow](https://img.shields.io/badge/Airflow-017CEE?style=flat-square&logo=apacheairflow&logoColor=white)
+![Databricks](https://img.shields.io/badge/Databricks-FF3621?style=flat-square&logo=databricks&logoColor=white)
+![Spark](https://img.shields.io/badge/PySpark-E25A1C?style=flat-square&logo=apachespark&logoColor=white)
+![Delta Lake](https://img.shields.io/badge/Delta%20Lake-003366?style=flat-square&logo=databricks&logoColor=white)
+![Airbyte](https://img.shields.io/badge/Airbyte-615EFF?style=flat-square&logo=airbyte&logoColor=white)
+![Athena](https://img.shields.io/badge/Athena-8C4FFF?style=flat-square&logo=amazonaws&logoColor=white)
+![BigQuery](https://img.shields.io/badge/BigQuery-4285F4?style=flat-square&logo=googlebigquery&logoColor=white)
+![Vertex AI](https://img.shields.io/badge/Vertex%20AI%20ADK-4285F4?style=flat-square&logo=googlecloud&logoColor=white)
+![MLflow](https://img.shields.io/badge/MLflow-0194E2?style=flat-square&logo=mlflow&logoColor=white)
+![Tableau](https://img.shields.io/badge/Tableau-E97627?style=flat-square&logo=tableau&logoColor=white)
+![Qlik](https://img.shields.io/badge/Qlik-009845?style=flat-square&logo=qlik&logoColor=white)
+
+</div>
 
 ---
 
@@ -57,7 +78,6 @@ Beyond building, I focus on making the platform **reliable**, **cost-efficient**
 
 ---
 
-<div align="center">
-<sub>Open to conversations about data engineering, architecture, or AI agents on data.</sub>
-</div>
+[![footer](https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=6,11,20&height=100&section=footer)](https://github.com/Mortezamahdavis)
+
 
