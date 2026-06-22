@@ -73,17 +73,6 @@ Beyond building, I focus on making the platform **reliable**, **cost-efficient**
 
 ---
 
-## Stats
-
-<div align="center">
-
-![GitHub Stats](https://github-readme-stats.vercel.app/api?username=Mortezamahdavis&show_icons=true&theme=tokyonight&hide_border=true&include_all_commits=true&cache_seconds=1800)
-![Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=Mortezamahdavis&layout=compact&theme=tokyonight&hide_border=true&langs_count=6&cache_seconds=1800)
-
-</div>
-
----
-
 [![footer](https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=6,11,20&height=100&section=footer)](https://github.com/Mortezamahdavis)
 
 
